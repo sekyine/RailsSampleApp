@@ -22,7 +22,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
-  </body>
+  <body> 
+  <%= render 'layouts/header' %> 
+  <% flash.each do |message_type, message| %> 
+    <%= message %> 
+  <% end %> 
+
+  <%= yield %> 
+</body> 
 </html>
