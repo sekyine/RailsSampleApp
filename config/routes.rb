@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy' 
   get '/:nickname', to: 'users#show' 
   get 'users/index' 
+  get '/:nickname/followers', to:'users#show_followers' 
+  get '/:nickname/followings', to:'users#show_followings' 
   
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
@@ -22,5 +24,5 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :tweets, only:[:create,:destroy] 
-
+  resources :follow_relationships, only:[:create,:destroy] 
 end

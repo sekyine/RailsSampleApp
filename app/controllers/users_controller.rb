@@ -11,4 +11,24 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def show_followers 
+    @user = User.find_by(nickname: params[:nickname]) 
+    if(@user) 
+        @followers = @user.followers.order(created_at: "DESC") 
+    else 
+        flash[:danger] = 'ユーザーが存在しません' 
+        redirect_to request.referer 
+    end 
+  end 
+
+  def show_followings 
+    @user = User.find_by(nickname: params[:nickname]) 
+      if(@user) 
+          @followings = @user.followings.order(created_at: "DESC") 
+      else 
+          flash[:danger] = 'ユーザーが存在しません' 
+          redirect_to request.referer 
+      end 
+  end
 end
