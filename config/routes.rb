@@ -22,7 +22,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+  post '/tweets/reply' 
 
-  resources :tweets, only:[:create,:destroy] 
+  resources :tweets, only:[:create,:destroy,:show] 
   resources :follow_relationships, only:[:create,:destroy] 
+  
 end

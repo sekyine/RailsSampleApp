@@ -2,6 +2,7 @@
 <div><%=tweet.content%></div> 
 <small><%=tweet.created_at%></small> 
 <% if tweet.user_id==current_user.id %> 
-    <%= link_to '削除', "/tweets/#{tweet.id}", method: :delete %> 
+    <span><%= link_to '削除', "/tweets/#{tweet.id}",  data:{turbo_method: :delete} %></span> 
 <% end %> 
+<span><%=link_to "reply(#{tweet.reply_tweets.length})","/tweets/#{tweet.id}"%></span> 
 <hr> 
